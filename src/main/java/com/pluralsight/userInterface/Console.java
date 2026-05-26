@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.userInterface;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
