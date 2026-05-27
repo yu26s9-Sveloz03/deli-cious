@@ -1,6 +1,11 @@
 package com.pluralsight.userInterface;
 
 import com.pluralsight.*;
+import com.pluralsight.items.BLT;
+import com.pluralsight.items.Chips;
+import com.pluralsight.items.Drink;
+import com.pluralsight.items.Sandwich;
+import com.pluralsight.toppings.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +40,7 @@ public class HomeScreen {
                     "2) Add Drink\n\t" +
                     "3) Add Chips\n\t" +
                     "4) Checkout\n\t" +
+                    "5) Pick One of Our Signatures\n\t" +
                     "0) Cancel Order");
             int command = Console.promptForInt("What would you like to do? ");
             switch (command) {
@@ -42,6 +48,7 @@ public class HomeScreen {
                 case 2 -> addDrink(order);
                 case 3 -> addChips(order);
                 case 4 -> {checkout(order); return;}
+                case 5 -> addSignature(order);
                 case 0 -> {
                     System.out.println("Thank you! Have a nice day!");
                     return;
@@ -89,13 +96,406 @@ public class HomeScreen {
                     "2) Cancel");
             int command = Console.promptForInt("Please choose one:",1,2);
             switch (command) {
-                case 1 -> createReceipt(order);
+                case 1 -> {createReceipt(order);return;}
                 case 2 -> {order = null;return;}
             }
         }
     }
 
+    public void addSignature(Order order) {
+        while (true) {
+            System.out.println("What signature would you like to try?\n\t" +
+                    "1) BLT\n\t" +
+                    "2) Chopped Cheese\n\t" +
+                    "3) Sam-I-Am's Green Eggs & Ham \n\n\t" +
+                    "0) Exit");
+            int command = Console.promptForInt("Please choose one: ");
+            switch (command) {
+                case 1 -> addBLT(order);
+//                case 2 -> addChoppedCheese();
+//                case 3 -> addSammy();
+                case 0 -> {return;}
+            }
+        }
+    }
+
     //helper methods
+
+    public void addBLT(Order order){
+        BLT blt = new BLT();
+        blt.printInfo();
+        editSandwich(blt);
+    }
+
+    public void editSandwich(Sandwich sandwich) {
+        while (true) {
+            int command = Console.promptForInt("Would you like to edit this sandwich?\n\t" +
+                    "1) Yes\n\t" +
+                    "2) No\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> editAttribute(sandwich);
+                case 2 -> {return;}
+                default -> System.out.println("Invalid input. Please try again");
+            }
+        }
+    }
+
+    public void editAttribute(Sandwich sandwich){
+        while (true) {
+            int command = Console.promptForInt("Which attribute would you like to edit?\n\t" +
+                    "1) Size\n\t" +
+                    "2) Bread\n\t" +
+                    "3) Toasted\n\t" +
+                    "4) Meat\n\t" +
+                    "5) Cheese\n\t" +
+                    "6) Toppings\n\t" +
+                    "7) Sauces\n\t" +
+                    "0) Exit\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> editSize(sandwich);
+                case 2 -> editBread(sandwich);
+                case 3 -> editToasted(sandwich);
+                case 4 -> editMeat(sandwich);
+                case 5 -> editCheese(sandwich);
+                case 6 -> editToppings(sandwich);
+                case 7 -> editSauces(sandwich);
+                case 0 -> {return;}
+                default -> System.out.println("Invalid input. Please try again");
+            }
+        }
+    }
+
+    public void editSize(Sandwich sandwich) {
+        while (true) {
+            int command = Console.promptForInt("What size do you want your sandwich to be?\n\t" +
+                    "1) Small (4\")\n\t" +
+                    "2) Medium (8\")\n\t" +
+                    "3) Large (12\")\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> {
+                    sandwich.setSize(4);
+                    sandwich.getMeat().setSize(4);
+                    sandwich.getCheese().setSize(4);
+                    System.out.println("Size changed!");
+                    return;
+                }
+                case 2 -> {
+                    sandwich.setSize(8);
+                    sandwich.getMeat().setSize(8);
+                    sandwich.getCheese().setSize(8);
+                    System.out.println("Size changed!");
+                    return;
+                }
+                case 3 -> {
+                    sandwich.setSize(12);
+                    sandwich.getMeat().setSize(12);
+                    sandwich.getCheese().setSize(12);
+                    System.out.println("Size changed!");
+                    return;
+                }
+                default -> System.out.println("Invalid input. Please try again");
+            }
+
+        }
+    }
+
+    public void editBread(Sandwich sandwich) {
+        while (true) {
+            int command = Console.promptForInt("What bread do you want?\n\t" +
+                    "1) White\n\t" +
+                    "2) Wheat\n\t" +
+                    "3) Rye\n\t" +
+                    "4) Wrap\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> {
+                    sandwich.setBread("White");
+                    System.out.println("Bread changed!");
+                    return;
+                }
+                case 2 -> {
+                    sandwich.setBread("Wheat");
+                    System.out.println("Bread changed!");
+                    return;
+                }
+                case 3 -> {
+                    sandwich.setBread("Rye");
+                    System.out.println("Bread changed!");
+                    return;
+                }
+                case 4 -> {
+                    sandwich.setBread("Wrap");
+                    System.out.println("Bread changed!");
+                }
+                default -> System.out.println("Invalid input. Please try again");
+            }
+
+        }
+    }
+
+    public void editToasted(Sandwich sandwich) {
+        while (true) {
+            int command = Console.promptForInt("Do you want the bread to be toasted?\n\t" +
+                    "1) Yes\n\t" +
+                    "2) No\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> {
+                    sandwich.setToasted(true);
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 2 -> {
+                    sandwich.setToasted(false);
+                    System.out.println("Status changed!");
+                    return;
+                }
+                default -> System.out.println("Invalid input. Please try again");
+            }
+
+        }
+    }
+
+    public void editMeat(Sandwich sandwich) {
+        while (true) {
+            int command = Console.promptForInt("What kind of meat do you want?\n\t" +
+                    "1) Steak\n\t" +
+                    "2) Ham\n\t" +
+                    "3) Salami\n\t" +
+                    "4) Roast Beef\n\t" +
+                    "5) Chicken\n\t" +
+                    "6) Bacon\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> {
+                    sandwich.getMeat().setName("Steak");
+                    editExtra(sandwich.getMeat());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 2 -> {
+                    sandwich.getMeat().setName("Ham");
+                    editExtra(sandwich.getMeat());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 3 -> {
+                    sandwich.getMeat().setName("Salami");
+                    editExtra(sandwich.getMeat());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 4 -> {
+                    sandwich.getMeat().setName("Roast Beef");
+                    editExtra(sandwich.getMeat());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 5 -> {
+                    sandwich.getMeat().setName("Chicken");
+                    editExtra(sandwich.getMeat());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 6 -> {
+                    sandwich.getMeat().setName("Bacon");
+                    editExtra(sandwich.getMeat());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                default -> System.out.println("Invalid input. Please try again");
+            }
+
+        }
+    }
+
+    public void editCheese(Sandwich sandwich){
+        while (true) {
+            int command = Console.promptForInt("What kind of cheese do you want?\n\t" +
+                    "1) American\n\t" +
+                    "2) Provolone\n\t" +
+                    "3) Cheddar\n\t" +
+                    "4) Swiss\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> {
+                    sandwich.getCheese().setName("American");
+                    editExtra(sandwich.getCheese());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 2 -> {
+                    sandwich.getCheese().setName("Provolone");
+                    editExtra(sandwich.getCheese());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 3 -> {
+                    sandwich.getCheese().setName("Cheddar");
+                    editExtra(sandwich.getCheese());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                case 4 -> {
+                    sandwich.getCheese().setName("Swiss");
+                    editExtra(sandwich.getCheese());
+                    System.out.println("Status changed!");
+                    return;
+                }
+                default -> System.out.println("Invalid input. Please try again");
+            }
+
+        }
+    }
+
+    public void editToppings(Sandwich sandwich) {
+        while (true) {
+            int command = Console.promptForInt("Do you want to add toppings or remove toppings?\n\t" +
+                    "1) Add toppings\n\t" +
+                    "2) Remove toppings\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> {
+                    addToppings(sandwich);
+                    System.out.println("Toppings added!");
+                    return;
+                }
+                case 2 -> {
+                    removeToppings(sandwich);
+                    System.out.println("Toppings removed!");
+                    return;
+                }
+                default -> System.out.println("Invalid input. Please try again");
+            }
+
+        }
+    }
+
+    public void addToppings(Sandwich sandwich) {
+        System.out.println("Here are our list of ingredients:\n\t" +
+                "1) Lettuce\n\t" +
+                "2) Peppers\n\t" +
+                "3) Onions\n\t" +
+                "4) Tomatoes\n\t" +
+                "5) Jalapenos\n\t" +
+                "6) Cucumbers\n\t" +
+                "7) Pickles\n\t" +
+                "8) Guacamole\n\t" +
+                "9) Mushrooms");
+        String allToppings = Console.promptForMultipleInts("Which toppings would you like? You can choose multiple using commas. ");
+        ArrayList<String> toppingNames = new ArrayList<>();
+        for (RegularTopping topping: sandwich.getToppings()){
+            toppingNames.add(topping.getName());
+        }
+        if ( allToppings.contains("1") && toppingNames.contains("Lettuce")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Lettuce")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("1")) {
+            sandwich.getToppings().add(new RegularTopping("Lettuce",false));
+        }
+        if ( allToppings.contains("2") && toppingNames.contains("Peppers")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Peppers")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("2")) {
+            sandwich.getToppings().add(new RegularTopping("Peppers",false));
+        }
+        if ( allToppings.contains("3") && toppingNames.contains("Onions")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Onions")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("3")) {
+            sandwich.getToppings().add(new RegularTopping("Onions",false));
+        }
+        if ( allToppings.contains("4") && toppingNames.contains("Tomatoes")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Tomatoes")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("4")) {
+            sandwich.getToppings().add(new RegularTopping("Tomatoes",false));
+        }
+        if ( allToppings.contains("5") && toppingNames.contains("Jalapenos")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Jalapenos")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("5")) {
+            sandwich.getToppings().add(new RegularTopping("Jalapenos",false));
+        }
+        if ( allToppings.contains("6") && toppingNames.contains("Cucumbers")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Cucumbers")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("6")) {
+            sandwich.getToppings().add(new RegularTopping("Cucumbers",false));
+        }
+        if ( allToppings.contains("7") && toppingNames.contains("Pickles")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Pickles")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("7")) {
+            sandwich.getToppings().add(new RegularTopping("Pickles",false));
+        }
+        if ( allToppings.contains("8") && toppingNames.contains("Guacamole")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Guacamole")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("8")) {
+            sandwich.getToppings().add(new RegularTopping("Guacamole",false));
+        }
+        if ( allToppings.contains("9") && toppingNames.contains("Mushrooms")){
+            for (RegularTopping topping : sandwich.getToppings()){
+                if (topping.getName().equalsIgnoreCase("Mushrooms")){
+                    topping.setExtra(true);
+                }
+            }
+        } else if (allToppings.contains("9")) {
+            sandwich.getToppings().add(new RegularTopping("Mushrooms",false));
+        }
+
+    }
+
+    public void editExtra(Topping topping) {
+        while (true) {
+            int command = Console.promptForInt("Do you want this to be extra?\n\t" +
+                    "1) Yes\n\t" +
+                    "2) No \n" +
+                    "Please choose one");
+            switch (command) {
+                case 1 -> {
+                    topping.setExtra(true);
+                    System.out.println("Topping is now extra");
+                    return;
+                }
+                case 2 -> {
+                    topping.setExtra(false);
+                    System.out.println("Topping is now normal proportions");
+                    return;
+                }
+                default -> System.out.println("Invalid input. Please try again");
+            }
+        }
+
+    }
 
     public void createReceipt(Order order){
         ReceiptManager receiptManager = new ReceiptManager();
@@ -292,7 +692,7 @@ public class HomeScreen {
                 "8) Guacamole\n\t" +
                 "9) Mushrooms");
         String allToppings = Console.promptForMultipleInts("Which toppings would you like? You can choose multiple using commas. ");
-        if ( allToppings.contains("1")){
+        if ( allToppings.contains("1") ){
             RegularTopping lettuce = new RegularTopping("Lettuce",false);
             toppings.add(lettuce);
         }

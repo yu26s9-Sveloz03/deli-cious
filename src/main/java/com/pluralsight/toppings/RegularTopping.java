@@ -1,6 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.toppings;
 
-public class RegularTopping extends Topping{
+public class RegularTopping extends Topping {
 
     public RegularTopping(String name, boolean extra) {
         super(name, extra);

@@ -1,6 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.items;
 
-public class Drink implements Item{
+public class Drink implements Item {
     private String name;
     private String size;
 
@@ -12,9 +12,9 @@ public class Drink implements Item{
     @Override
     public double getPrice() {
         switch (size.toLowerCase()) {
-            case "small" -> {return 0.50;}
-            case "medium" -> {return 1.00;}
-            case "large" -> {return 1.50;}
+            case "small" -> {return 2.00;}
+            case "medium" -> {return 2.50;}
+            case "large" -> {return 3.00;}
             default -> {return 0.0;}
         }
     }

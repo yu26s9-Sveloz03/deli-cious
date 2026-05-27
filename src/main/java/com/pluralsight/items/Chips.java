@@ -1,6 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.items;
 
-public class Chips implements Item{
+public class Chips implements Item {
     private String name;
     private double price;
 

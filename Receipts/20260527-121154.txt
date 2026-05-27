@@ -1,0 +1,7 @@
+
+ 1x SpriteDrink---------------2.5
+	Size: Medium
+ 1x Coca-ColaDrink---------------2.0
+	Size: Small
+ 1x Cheetos Bag---------------1.5
+Total Price: --------------- 6.0

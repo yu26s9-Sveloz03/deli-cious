@@ -1,6 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.toppings;
 
-public class Cheese extends Topping{
+public class Cheese extends Topping {
 
     private int size;
 
@@ -30,5 +30,13 @@ public class Cheese extends Topping{
             price += getExtraPrice();
         }
         return price;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }
