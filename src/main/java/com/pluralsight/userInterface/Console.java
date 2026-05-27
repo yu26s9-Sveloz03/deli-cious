@@ -42,6 +42,21 @@ public class Console {
         return scanner.nextLine();
     }
 
+    public static String promptForMultipleInts(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+
+        while(true) {
+            result = scanner.nextLine();
+            if (result.matches("[0-9,]+")) {
+                return result;
+            } else {
+                System.out.println("Invalid input. Only digits and commas are allowed.");
+            }
+        }
+    }
+
     /**
      * Prompts the user for an integer.
      * @param prompt to display the user

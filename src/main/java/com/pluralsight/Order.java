@@ -21,4 +21,12 @@ public class Order {
     public void addItem(Item item) {
         this.items.add(item);
     }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 }

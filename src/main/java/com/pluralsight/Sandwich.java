@@ -34,6 +34,40 @@ public class Sandwich implements Item{
         return price;
     }
 
+    @Override
+    public void printInfo() {
+        System.out.println(" 1x Sandwich---------------" + getPrice() + "\n\t" +
+                "Size: " + getSize() + "\n\t" +
+                "Bread: " + getBread() + "\n\t" +
+                "Toasted: " + isToasted());
+        if(getMeat().isExtra()){
+            System.out.println("\tMeat: EXTRA " + getMeat().getName());
+        } else {
+            System.out.println("\tMeat: " + getMeat().getName());
+        }
+        if(getCheese().isExtra()){
+            System.out.println("\tCheese: EXTRA " + getCheese().getName());
+        } else {
+            System.out.println("\tCheese: " + getCheese().getName());
+        }
+        System.out.println("\tToppings: ");
+        for (RegularTopping topping : this.toppings){
+            if(topping.isExtra()){
+                System.out.println("\t\tEXTRA " + topping.getName());
+            } else {
+                System.out.println("\t\t" + topping.getName());
+            }
+        }
+        System.out.println("\tSauces: ");
+        for (Sauce sauce : this.sauces) {
+            if(sauce.isExtra()){
+                System.out.println("\t\tEXTRA " + sauce.getName());
+            } else {
+                System.out.println("\t\t" + sauce.getName());
+            }
+        }
+    }
+
     public int getSize() {
         return size;
     }

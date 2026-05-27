@@ -18,4 +18,26 @@ public class Drink implements Item{
             default -> {return 0.0;}
         }
     }
+
+    @Override
+    public void printInfo() {
+        System.out.println(" 1x " + getName() + "Drink---------------" + getPrice() + "\n\t" +
+                "Size: " + getSize());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 }

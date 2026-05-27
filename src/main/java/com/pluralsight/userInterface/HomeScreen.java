@@ -1,9 +1,6 @@
 package com.pluralsight.userInterface;
 
-import com.pluralsight.Cheese;
-import com.pluralsight.Meat;
-import com.pluralsight.RegularTopping;
-import com.pluralsight.Sauce;
+import com.pluralsight.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +11,11 @@ public class HomeScreen {
 //    Console console = new Console();
 
     public void homeScreen() {
-        System.out.println("-----Sam's Bodega-----\n\t" +
-                "1) New Order\n\t" +
-                "0) Exit");
-        int command = Console.promptForInt("What would you like to do? ");
         while (true) {
+            System.out.println("-----Sam's Bodega-----\n\t" +
+                    "1) New Order\n\t" +
+                    "0) Exit");
+            int command = Console.promptForInt("What would you like to do? ");
             switch (command) {
                 case 1 -> newOrder();
                 case 0 -> {
@@ -31,19 +28,20 @@ public class HomeScreen {
     }
 
     public void newOrder() {
-        System.out.println("-----Order Screen-----\n\t" +
-                "1) Add Sandwich\n\t" +
-                "2) Add Drink\n\t" +
-                "3) Add Chips\n\t" +
-                "4) Checkout\n\t" +
-                "0) Cancel Order");
+        Order order = new Order();
         while (true) {
+            System.out.println("-----Order Screen-----\n\t" +
+                    "1) Add Sandwich\n\t" +
+                    "2) Add Drink\n\t" +
+                    "3) Add Chips\n\t" +
+                    "4) Checkout\n\t" +
+                    "0) Cancel Order");
             int command = Console.promptForInt("What would you like to do? ");
             switch (command) {
-                case 1 -> addSandwich();
-//                case 2 -> addDrink();
-//                case 3 -> addChips();
-//                case 4 -> checkout();
+                case 1 -> addSandwich(order);
+                case 2 -> addDrink(order);
+                case 3 -> addChips(order);
+                case 4 -> checkout(order);
                 case 0 -> {
                     System.out.println("Thank you! Have a nice day!");
                     return;
@@ -53,15 +51,109 @@ public class HomeScreen {
         }
     }
 
-    public void addSandwich() {
-        String bread = selectBread();
+    public void addSandwich(Order order) {
         int size = selectSize();
+        String bread = selectBread();
+        boolean isToasted = selectToasted();
         Meat meat = selectMeat(size);
         Cheese cheese = selectCheese(size);
         List<RegularTopping> toppings = selectToppings();
         List<Sauce> sauces = selectSauces();
+        //create sandwich down here
+        Sandwich sandwich = new Sandwich(size,bread,isToasted,meat,cheese,toppings,sauces);
+        order.addItem(sandwich);
+        System.out.println("Sandwich Added!");
+    }
 
-        //create sandwich down here..
+    public void addDrink(Order order) {
+        String name = selectDrinkName();
+        String size = selectDrinkSize();
+        Drink drink = new Drink(size,name);
+        order.addItem(drink);
+        System.out.println(drink.getSize() + " " + drink.getName() + " Added!");
+    }
+
+    public void addChips(Order order) {
+        String name = selectChipsName();
+        Chips chips = new Chips(name);
+        order.addItem(chips);
+        System.out.println(chips.getName() + " Added!");
+    }
+
+    public void checkout(Order order) {
+        System.out.println("-----Checkout-----");
+        for (Item item: order.getItems()) {
+            if (item instanceof Sandwich){
+                item.printInfo();
+            }
+        }
+        for (Item item: order.getItems()) {
+            if (item instanceof Drink){
+                item.printInfo();
+            }
+        }
+        for (Item item: order.getItems()) {
+            if (item instanceof Chips){
+                item.printInfo();
+            }
+        }
+    }
+
+    //helper methods
+    public String selectChipsName(){
+        System.out.println("Choose a chips option:\n\t" +
+                "1) Doritos\n\t" +
+                "2) Lays\n\t" +
+                "3) Cheetos\n\t" +
+                "4) Pringles\n\t" +
+                "5) Takis");
+        while (true) {
+            int command = Console.promptForInt("Please choose one: ");
+            switch (command) {
+                case 1 -> {return "Doritos";}
+                case 2 -> {return "Lays";}
+                case 3 -> {return "Cheetos";}
+                case 4 -> {return "Pringles";}
+                case 5 -> {return "Takis";}
+                default -> System.out.println("Invalid input. Please try again");
+            }
+        }
+    }
+
+    public String selectDrinkName() {
+        System.out.println("Choose a drink option:\n\t" +
+                "1) Coca-Cola\n\t" +
+                "2) Sprite\n\t" +
+                "3) Dr. Pepper\n\t" +
+                "4) Fanta\n\t" +
+                "5) Mountain Dew");
+        while (true) {
+            int command = Console.promptForInt("Please choose one: ");
+            switch (command) {
+                case 1 -> {return "Coca-Cola";}
+                case 2 -> {return "Sprite";}
+                case 3 -> {return "Dr. Pepper";}
+                case 4 -> {return "Fanta";}
+                case 5 -> {return "Mountain Dew";}
+                default -> System.out.println("Invalid input. Please try again");
+            }
+        }
+    }
+
+    public String selectDrinkSize(){
+        System.out.println("Choose a drink size:\n\t" +
+                "1) Small\n\t" +
+                "2) Medium\n\t" +
+                "3) Large\n\t");
+        while (true) {
+            int command = Console.promptForInt("Please choose one: ");
+            switch (command) {
+                case 1 -> {return "Small";}
+                case 2 -> {return "Medium";}
+                case 3 -> {return "Large";}
+                default -> System.out.println("Invalid input. Please try again");
+            }
+        }
     }
 
     public String selectBread() {
@@ -95,6 +187,21 @@ public class HomeScreen {
                 case 3 -> {return 12;}
                 default -> System.out.println("Invalid input. Please try again");
             }
+        }
+    }
+
+    public boolean selectToasted(){
+        while(true){
+            int toasted = Console.promptForInt("Would you like the bread toasted?\n\t" +
+                    "1) Yes\n\t" +
+                    "2) No\n" +
+                    "What would you like? ");
+            switch (toasted) {
+                case 1 -> {return true;}
+                case 2 -> {return false;}
+                default -> System.out.println("Invalid input. Please try again.");
+            }
+
         }
     }
 
@@ -182,7 +289,7 @@ public class HomeScreen {
                 "7) Pickles\n\t" +
                 "8) Guacamole\n\t" +
                 "9) Mushrooms");
-        String allToppings = Console.promptForString("Which toppings would you like? You can choose multiple using commas. ");
+        String allToppings = Console.promptForMultipleInts("Which toppings would you like? You can choose multiple using commas. ");
         if ( allToppings.contains("1")){
             RegularTopping lettuce = new RegularTopping("Lettuce",false);
             toppings.add(lettuce);
@@ -225,7 +332,12 @@ public class HomeScreen {
             pickedToppings += i + ") " + toppings.get(i-1).getName() + "\n\t";
         }
         System.out.println(pickedToppings);
-        String allExtras = Console.promptForString("Which topping would you like extra of? You can choose multiple using commas.");
+        System.out.println("\t0) No Extra Toppings");
+        String allExtras = Console.promptForMultipleInts("Which topping would you like extra of? You can choose multiple using commas.");
+        if (allExtras.contains("0")){
+            return toppings;
+        }
+
         for (int i = 1; i <= 9; i++){
             if (allExtras.contains(String.valueOf(i))) {
                 toppings.get(i-1).setExtra(true);
@@ -244,7 +356,7 @@ public class HomeScreen {
                 "5) Thousand Islands\n\t" +
                 "6) Vinaigrette\n\t" +
                 "7) Au Jus");
-        String allSauces = Console.promptForString("Which sauces would you like? You can choose multiple using commas. ");
+        String allSauces = Console.promptForMultipleInts("Which sauces would you like? You can choose multiple using commas. ");
         if ( allSauces.contains("1")){
             Sauce mayo = new Sauce("Mayo",false);
             sauces.add(mayo);
@@ -279,7 +391,11 @@ public class HomeScreen {
             pickedSauces += i + ") " + sauces.get(i-1).getName() + "\n\t";
         }
         System.out.println(pickedSauces);
-        String allExtras = Console.promptForString("Which sauce would you like extra of? You can choose multiple using commas.");
+        System.out.println("\t0) No Extra Toppings");
+        String allExtras = Console.promptForMultipleInts("Which sauce would you like extra of? You can choose multiple using commas.");
+        if (allExtras.contains("0")){
+            return sauces;
+        }
         for (int i = 1; i <= 9; i++){
             if (allExtras.contains(String.valueOf(i))) {
                 sauces.get(i-1).setExtra(true);
