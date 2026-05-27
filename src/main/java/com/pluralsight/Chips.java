@@ -15,8 +15,9 @@ public class Chips implements Item{
     }
 
     @Override
-    public void printInfo() {
-        System.out.println(" 1x " + getName() + " Bag---------------" + getPrice());
+    public String printInfo() {
+        String info = "\n 1x " + getName() + " Bag---------------" + getPrice();
+        return info;
     }
 
     public String getName() {

@@ -35,37 +35,38 @@ public class Sandwich implements Item{
     }
 
     @Override
-    public void printInfo() {
-        System.out.println(" 1x Sandwich---------------" + getPrice() + "\n\t" +
+    public String printInfo() {
+        String info = " 1x Sandwich---------------" + getPrice() + "\n\t" +
                 "Size: " + getSize() + "\"\n\t" +
                 "Bread: " + getBread() + "\n\t" +
-                "Toasted: " + isToasted());
+                "Toasted: " + isToasted();
         if(getMeat().isExtra()){
-            System.out.println("\tMeat: EXTRA " + getMeat().getName());
+            info += "\n\tMeat: EXTRA " + getMeat().getName();
         } else {
-            System.out.println("\tMeat: " + getMeat().getName());
+            info += "\n\tMeat: " + getMeat().getName();
         }
         if(getCheese().isExtra()){
-            System.out.println("\tCheese: EXTRA " + getCheese().getName());
+            info += "\n\tCheese: EXTRA " + getCheese().getName();
         } else {
-            System.out.println("\tCheese: " + getCheese().getName());
+            info += "\n\tCheese: " + getCheese().getName();
         }
-        System.out.println("\tToppings: ");
+        info += "\n\tToppings: ";
         for (RegularTopping topping : this.toppings){
             if(topping.isExtra()){
-                System.out.println("\t\tEXTRA " + topping.getName());
+                info += "\n\t\tEXTRA " + topping.getName();
             } else {
-                System.out.println("\t\t" + topping.getName());
+                info += "\n\t\t" + topping.getName();
             }
         }
-        System.out.println("\tSauces: ");
+        info += "\n\tSauces: ";
         for (Sauce sauce : this.sauces) {
             if(sauce.isExtra()){
-                System.out.println("\t\tEXTRA " + sauce.getName());
+                info += "\n\t\tEXTRA " + sauce.getName();
             } else {
-                System.out.println("\t\t" + sauce.getName());
+                info += "\n\t\t" + sauce.getName();
             }
         }
+        return info;
     }
 
     public int getSize() {

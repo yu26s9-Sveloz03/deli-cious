@@ -22,6 +22,27 @@ public class Order {
         this.items.add(item);
     }
 
+    public String printReceipt(){
+        String receipt = "";
+        for (Item item: getItems()) {
+            if (item instanceof Sandwich){
+                receipt += item.printInfo();
+            }
+        }
+        for (Item item: getItems()) {
+            if (item instanceof Drink){
+                receipt += item.printInfo();
+            }
+        }
+        for (Item item: getItems()) {
+            if (item instanceof Chips){
+                receipt += item.printInfo();
+            }
+        }
+        receipt += "\nTotal Price: --------------- " + getTotalPrice();
+        return receipt;
+    }
+
     public List<Item> getItems() {
         return items;
     }

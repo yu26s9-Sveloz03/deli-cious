@@ -82,22 +82,7 @@ public class HomeScreen {
 
     public void checkout(Order order) {
         System.out.println("-----Checkout-----");
-        for (Item item: order.getItems()) {
-            if (item instanceof Sandwich){
-                item.printInfo();
-            }
-        }
-        for (Item item: order.getItems()) {
-            if (item instanceof Drink){
-                item.printInfo();
-            }
-        }
-        for (Item item: order.getItems()) {
-            if (item instanceof Chips){
-                item.printInfo();
-            }
-        }
-        System.out.println("Total Price: --------------- " + order.getTotalPrice());
+        System.out.println(order.printReceipt());
         while (true) {
             System.out.println("What do you want to do:\n\t" +
                     "1) Confirm\n\t" +
@@ -113,7 +98,8 @@ public class HomeScreen {
     //helper methods
 
     public void createReceipt(Order order){
-
+        ReceiptManager receiptManager = new ReceiptManager();
+        receiptManager.writeReceipt(order);
     }
 
     public String selectChipsName(){

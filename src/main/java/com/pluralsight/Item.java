@@ -4,5 +4,5 @@ public interface Item {
 
     public double getPrice();
 
-    public void printInfo();
+    public String printInfo();
 }

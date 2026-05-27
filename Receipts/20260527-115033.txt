@@ -1,0 +1,14 @@
+ 1x Sandwich---------------8.05
+	Size: 4"
+	Bread: White
+	Toasted: true
+	Meat: EXTRA Steak
+	Cheese: EXTRA American
+	Toppings: 
+		EXTRA Lettuce
+	Sauces: 
+		EXTRA Mayo
+ 1x SpriteDrink---------------1.0
+	Size: Medium
+ 1x Cheetos Bag---------------1.5
+Total Price: --------------- 10.55

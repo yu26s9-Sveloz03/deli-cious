@@ -20,9 +20,10 @@ public class Drink implements Item{
     }
 
     @Override
-    public void printInfo() {
-        System.out.println(" 1x " + getName() + "Drink---------------" + getPrice() + "\n\t" +
-                "Size: " + getSize());
+    public String printInfo() {
+        String info = "\n 1x " + getName() + "Drink---------------" + getPrice() + "\n\t" +
+                "Size: " + getSize();
+        return info;
     }
 
     public String getName() {
