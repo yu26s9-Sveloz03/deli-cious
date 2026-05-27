@@ -37,7 +37,7 @@ public class Sandwich implements Item{
     @Override
     public void printInfo() {
         System.out.println(" 1x Sandwich---------------" + getPrice() + "\n\t" +
-                "Size: " + getSize() + "\n\t" +
+                "Size: " + getSize() + "\"\n\t" +
                 "Bread: " + getBread() + "\n\t" +
                 "Toasted: " + isToasted());
         if(getMeat().isExtra()){

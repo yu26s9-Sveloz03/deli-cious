@@ -41,7 +41,7 @@ public class HomeScreen {
                 case 1 -> addSandwich(order);
                 case 2 -> addDrink(order);
                 case 3 -> addChips(order);
-                case 4 -> checkout(order);
+                case 4 -> {checkout(order); return;}
                 case 0 -> {
                     System.out.println("Thank you! Have a nice day!");
                     return;
@@ -97,9 +97,25 @@ public class HomeScreen {
                 item.printInfo();
             }
         }
+        System.out.println("Total Price: --------------- " + order.getTotalPrice());
+        while (true) {
+            System.out.println("What do you want to do:\n\t" +
+                    "1) Confirm\n\t" +
+                    "2) Cancel");
+            int command = Console.promptForInt("Please choose one:",1,2);
+            switch (command) {
+                case 1 -> createReceipt(order);
+                case 2 -> {order = null;return;}
+            }
+        }
     }
 
     //helper methods
+
+    public void createReceipt(Order order){
+
+    }
+
     public String selectChipsName(){
         System.out.println("Choose a chips option:\n\t" +
                 "1) Doritos\n\t" +
@@ -338,7 +354,7 @@ public class HomeScreen {
             return toppings;
         }
 
-        for (int i = 1; i <= 9; i++){
+        for (int i = 1; i <= toppings.size(); i++){
             if (allExtras.contains(String.valueOf(i))) {
                 toppings.get(i-1).setExtra(true);
             }
@@ -396,7 +412,7 @@ public class HomeScreen {
         if (allExtras.contains("0")){
             return sauces;
         }
-        for (int i = 1; i <= 9; i++){
+        for (int i = 1; i <= sauces.size(); i++){
             if (allExtras.contains(String.valueOf(i))) {
                 sauces.get(i-1).setExtra(true);
             }
