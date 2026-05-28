@@ -72,6 +72,7 @@ public class Sandwich implements Item {
                 info += "\n\t\t" + sauce.getName();
             }
         }
+        info += "\n";
         return info;
     }
 

@@ -1,0 +1,25 @@
+ 1x Sandwich---------------16.15
+	Size: 12"
+	Bread: Wrap
+	Toasted: false
+	Meat: EXTRA Steak
+	Cheese: EXTRA Cheddar
+	Toppings: 
+		EXTRA Cucumbers
+	Sauces: 
+		Ketchup 1x Sandwich---------------7.55
+	Size: 4"
+	Bread: Rye
+	Toasted: true
+	Meat: Ham
+	Cheese: EXTRA American
+	Toppings: 
+		Scrambled Eggs
+		Spinach
+		Broccoli
+	Sauces: 
+		Pesto
+ 1x FantaDrink---------------3.0
+	Size: Large
+ 1x Lays Bag---------------1.5
+Total Price: --------------- 28.2

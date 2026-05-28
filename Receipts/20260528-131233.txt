@@ -1,0 +1,26 @@
+ 1x Sandwich---------------8.05
+	Size: 4"
+	Bread: White
+	Toasted: true
+	Meat: EXTRA Steak
+	Cheese: EXTRA American
+	Toppings: 
+		EXTRA Lettuce
+	Sauces: 
+		Mayo
+ 1x Sandwich---------------13.75
+	Size: 12"
+	Bread: White
+	Toasted: false
+	Meat: Ground Beef
+	Cheese: American
+	Toppings: 
+		Lettuce
+		Peppers
+		Onions
+		Tomatoes
+	Sauces: 
+		Mayo
+		Ketchup
+
+Total Price: --------------- 21.8

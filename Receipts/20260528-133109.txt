@@ -1,0 +1,17 @@
+ 1x Sandwich---------------10.5
+	Size: 8"
+	Bread: White
+	Toasted: true
+	Meat: Salami
+	Cheese: American
+	Toppings: 
+		Lettuce
+		Peppers
+		Onions
+	Sauces: 
+		Vinaigrette
+
+ 1x Mountain DewDrink---------------3.0
+	Size: Large
+ 1x Cheetos Bag---------------1.5
+Total Price: --------------- 15.0

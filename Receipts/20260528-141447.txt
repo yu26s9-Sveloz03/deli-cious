@@ -1,0 +1,20 @@
+ 1x Sandwich---------------13.75
+	Size: 12"
+	Bread: Rye
+	Toasted: false
+	Meat: Ground Beef
+	Cheese: American
+	Toppings: 
+		EXTRA Lettuce
+		Peppers
+		EXTRA Onions
+		Tomatoes
+		Jalapenos
+	Sauces: 
+		EXTRA Mayo
+		Ketchup
+		Mustard
+		Ranch
+		Vinaigrette
+
+Total Price: --------------- 13.75

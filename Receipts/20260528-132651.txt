@@ -1,0 +1,19 @@
+ 1x Sandwich---------------7.55
+	Size: 4"
+	Bread: Wheat
+	Toasted: true
+	Meat: Steak
+	Cheese: EXTRA Cheddar
+	Toppings: 
+		EXTRA Lettuce
+		EXTRA Peppers
+		EXTRA Onions
+		Tomatoes
+		Pickles
+	Sauces: 
+		Mayo
+		Ketchup
+
+ 1x Dr. PepperDrink---------------2.5
+	Size: Medium
+Total Price: --------------- 10.05
