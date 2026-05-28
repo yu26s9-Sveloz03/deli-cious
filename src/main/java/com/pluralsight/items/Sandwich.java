@@ -5,6 +5,7 @@ import com.pluralsight.toppings.Meat;
 import com.pluralsight.toppings.RegularTopping;
 import com.pluralsight.toppings.Sauce;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich implements Item {
@@ -14,10 +15,10 @@ public class Sandwich implements Item {
     private boolean toasted;
     private Meat meat;
     private Cheese cheese;
-    private List<RegularTopping> toppings;
-    private List<Sauce> sauces;
+    private ArrayList<RegularTopping> toppings;
+    private ArrayList<Sauce> sauces;
 
-    public Sandwich(int size, String bread, boolean toasted, Meat meat, Cheese cheese, List<RegularTopping> toppings, List<Sauce> sauces) {
+    public Sandwich(int size, String bread, boolean toasted, Meat meat, Cheese cheese, ArrayList<RegularTopping> toppings, ArrayList<Sauce> sauces) {
         this.size = size;
         this.bread = bread;
         this.toasted = toasted;
@@ -118,7 +119,7 @@ public class Sandwich implements Item {
         return toppings;
     }
 
-    public void setToppings(List<RegularTopping> toppings) {
+    public void setToppings(ArrayList<RegularTopping> toppings) {
         this.toppings = toppings;
     }
 
@@ -126,7 +127,7 @@ public class Sandwich implements Item {
         return sauces;
     }
 
-    public void setSauces(List<Sauce> sauces) {
+    public void setSauces(ArrayList<Sauce> sauces) {
         this.sauces = sauces;
     }
 }

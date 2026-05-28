@@ -1,10 +1,7 @@
 package com.pluralsight.userInterface;
 
 import com.pluralsight.*;
-import com.pluralsight.items.BLT;
-import com.pluralsight.items.Chips;
-import com.pluralsight.items.Drink;
-import com.pluralsight.items.Sandwich;
+import com.pluralsight.items.*;
 import com.pluralsight.toppings.*;
 
 import java.util.ArrayList;
@@ -64,8 +61,8 @@ public class HomeScreen {
         boolean isToasted = selectToasted();
         Meat meat = selectMeat(size);
         Cheese cheese = selectCheese(size);
-        List<RegularTopping> toppings = selectToppings();
-        List<Sauce> sauces = selectSauces();
+        ArrayList<RegularTopping> toppings = selectToppings();
+        ArrayList<Sauce> sauces = selectSauces();
         //create sandwich down here
         Sandwich sandwich = new Sandwich(size,bread,isToasted,meat,cheese,toppings,sauces);
         order.addItem(sandwich);
@@ -111,9 +108,9 @@ public class HomeScreen {
                     "0) Exit");
             int command = Console.promptForInt("Please choose one: ");
             switch (command) {
-                case 1 -> addBLT(order);
-//                case 2 -> addChoppedCheese();
-//                case 3 -> addSammy();
+                case 1 -> {addBLT(order);return;}
+                case 2 -> {addChoppedCheese(order);return;}
+                case 3 -> {addSammy(order);return;}
                 case 0 -> {return;}
             }
         }
@@ -121,10 +118,25 @@ public class HomeScreen {
 
     //helper methods
 
+    public void addSammy(Order order) {
+        GreenEggsAndHam greenEggsAndHam = new GreenEggsAndHam();
+        greenEggsAndHam.printInfo();
+        editSandwich(greenEggsAndHam);
+        order.addItem(greenEggsAndHam);
+    }
+
+    public void addChoppedCheese(Order order) {
+        ChoppedCheese choppedCheese = new ChoppedCheese();
+        choppedCheese.printInfo();
+        editSandwich(choppedCheese);
+        order.addItem(choppedCheese);
+    }
+
     public void addBLT(Order order){
         BLT blt = new BLT();
         blt.printInfo();
         editSandwich(blt);
+        order.addItem(blt);
     }
 
     public void editSandwich(Sandwich sandwich) {
@@ -374,6 +386,121 @@ public class HomeScreen {
         }
     }
 
+    public void editSauces(Sandwich sandwich) {
+        while (true) {
+            int command = Console.promptForInt("Do you want to add sauces or remove sauces?\n\t" +
+                    "1) Add sauces\n\t" +
+                    "2) Remove sauces\n" +
+                    "Please choose one: ");
+            switch (command) {
+                case 1 -> {
+                    addSauces(sandwich);
+                    System.out.println("Sauces added!");
+                    return;
+                }
+                case 2 -> {
+                    removeSauces(sandwich);
+                    System.out.println("Sauces removed!");
+                    return;
+                }
+                default -> System.out.println("Invalid input. Please try again");
+            }
+
+        }
+    }
+
+    public void addSauces(Sandwich sandwich) {
+        System.out.println("Here are our list of ingredients:\n\t" +
+                "1) Mayo\n\t" +
+                "2) Mustard\n\t" +
+                "3) Ketchup\n\t" +
+                "4) Ranch\n\t" +
+                "5) Thousand Islands\n\t" +
+                "6) Vinaigrette\n\t" +
+                "7) Au Jus");
+        String allSauces = Console.promptForMultipleInts("Which toppings would you like? You can choose multiple using commas. ");
+        ArrayList<String> saucesNames = new ArrayList<>();
+        for (Sauce sauce: sandwich.getSauces()){
+            saucesNames.add(sauce.getName());
+        }
+        if ( allSauces.contains("1") && saucesNames.contains("Mayo")){
+            for (Sauce sauce : sandwich.getSauces()){
+                if (sauce.getName().equalsIgnoreCase("Mayo")){
+                    sauce.setExtra(true);
+                }
+            }
+        } else if (allSauces.contains("1")) {
+            sandwich.getSauces().add(new Sauce("Mayo",false));
+        }
+        if ( allSauces.contains("2") && saucesNames.contains("Mustard")){
+            for (Sauce sauce : sandwich.getSauces()){
+                if (sauce.getName().equalsIgnoreCase("Mustard")){
+                    sauce.setExtra(true);
+                }
+            }
+        } else if (allSauces.contains("2")) {
+            sandwich.getSauces().add(new Sauce("Mustard",false));
+        }
+        if ( allSauces.contains("3") && saucesNames.contains("Ketchup")){
+            for (Sauce sauce : sandwich.getSauces()){
+                if (sauce.getName().equalsIgnoreCase("Ketchup")){
+                    sauce.setExtra(true);
+                }
+            }
+        } else if (allSauces.contains("3")) {
+            sandwich.getSauces().add(new Sauce("Ketchup",false));
+        }
+        if ( allSauces.contains("4") && saucesNames.contains("Ranch")){
+            for (Sauce sauce : sandwich.getSauces()){
+                if (sauce.getName().equalsIgnoreCase("Ranch")){
+                    sauce.setExtra(true);
+                }
+            }
+        } else if (allSauces.contains("4")) {
+            sandwich.getSauces().add(new Sauce("Ranch",false));
+        }
+        if ( allSauces.contains("5") && saucesNames.contains("Thousand Islands")){
+            for (Sauce sauce : sandwich.getSauces()){
+                if (sauce.getName().equalsIgnoreCase("Thousand Islands")){
+                    sauce.setExtra(true);
+                }
+            }
+        } else if (allSauces.contains("5")) {
+            sandwich.getSauces().add(new Sauce("Thousand Islands",false));
+        }
+        if ( allSauces.contains("6") && saucesNames.contains("Vinaigrette")){
+            for (Sauce sauce : sandwich.getSauces()){
+                if (sauce.getName().equalsIgnoreCase("Vinaigrette")){
+                    sauce.setExtra(true);
+                }
+            }
+        } else if (allSauces.contains("6")) {
+            sandwich.getSauces().add(new Sauce("Vinaigrette",false));
+        }
+        if ( allSauces.contains("7") && saucesNames.contains("Au Jus")){
+            for (Sauce sauce : sandwich.getSauces()){
+                if (sauce.getName().equalsIgnoreCase("Au Jus")){
+                    sauce.setExtra(true);
+                }
+            }
+        } else if (allSauces.contains("7")) {
+            sandwich.getSauces().add(new Sauce("Au Jus",false));
+        }
+    }
+
+    public void removeSauces(Sandwich sandwich) {
+        System.out.print("Here are all the current options:\n\t ");
+        for (int i = 1; i <= sandwich.getSauces().size(); i++){
+            System.out.print("\t" + i + ") " + sandwich.getSauces().get(i-1).getName() + "\n\t");
+        }
+        String saucesToRemove = Console.promptForMultipleInts("Which sauces would you like to remove? You can choose multiple using commas. ");
+        for (int i = sandwich.getSauces().size(); i > 0; i--) {
+            if (saucesToRemove.contains(String.valueOf(i))) {
+                sandwich.getSauces().remove(sandwich.getSauces().get(i-1));
+            }
+        }
+    }
+
     public void addToppings(Sandwich sandwich) {
         System.out.println("Here are our list of ingredients:\n\t" +
                 "1) Lettuce\n\t" +
@@ -471,7 +598,19 @@ public class HomeScreen {
         } else if (allToppings.contains("9")) {
             sandwich.getToppings().add(new RegularTopping("Mushrooms",false));
         }
+    }
 
+    public void removeToppings(Sandwich sandwich) {
+        System.out.print("Here are all the current options:\n\t ");
+        for (int i = 1; i <= sandwich.getToppings().size(); i++){
+            System.out.print("\t" + i + ") " + sandwich.getToppings().get(i-1).getName() + "\n\t");
+        }
+        String toppingsToRemove = Console.promptForMultipleInts("Which toppings would you like to remove? You can choose multiple using commas. ");
+        for (int i = sandwich.getToppings().size(); i > 0; i--) {
+            if (toppingsToRemove.contains(String.valueOf(i))) {
+                sandwich.getToppings().remove(sandwich.getToppings().get(i-1));
+            }
+        }
     }
 
     public void editExtra(Topping topping) {
@@ -679,8 +818,8 @@ public class HomeScreen {
         return new Cheese(name,extra,size);
     }
 
-    public List<RegularTopping> selectToppings() {
-        List<RegularTopping> toppings = new ArrayList<>();
+    public ArrayList<RegularTopping> selectToppings() {
+        ArrayList<RegularTopping> toppings = new ArrayList<>();
         System.out.println("Here are our list of ingredients:\n\t" +
                 "1) Lettuce\n\t" +
                 "2) Peppers\n\t" +
@@ -748,8 +887,8 @@ public class HomeScreen {
         return toppings;
     }
 
-    public List<Sauce> selectSauces() {
-        List<Sauce> sauces = new ArrayList<>();
+    public ArrayList<Sauce> selectSauces() {
+        ArrayList<Sauce> sauces = new ArrayList<>();
         System.out.println("Here are our list of sauces:\n\t" +
                 "1) Mayo\n\t" +
                 "2) Mustard\n\t" +

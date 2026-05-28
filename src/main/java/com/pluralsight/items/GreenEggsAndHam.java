@@ -5,6 +5,8 @@ import com.pluralsight.toppings.Meat;
 import com.pluralsight.toppings.RegularTopping;
 import com.pluralsight.toppings.Sauce;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GreenEggsAndHam extends Sandwich{
@@ -15,9 +17,9 @@ public class GreenEggsAndHam extends Sandwich{
                 false,
                 new Meat("Ham",false,4),
                 new Cheese("Provolone",false,4),
-                List.of(new RegularTopping("Scrambled Eggs",false),
+                new ArrayList<>(Arrays.asList(new RegularTopping("Scrambled Eggs",false),
                         new RegularTopping("Spinach",false),
-                        new RegularTopping("Broccoli",false)),
-                List.of(new Sauce("Pesto",false)));
+                        new RegularTopping("Broccoli",false))),
+                new ArrayList<>(Arrays.asList(new Sauce("Pesto",false))));
     }
 }

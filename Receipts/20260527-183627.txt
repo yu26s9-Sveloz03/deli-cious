@@ -1,0 +1,12 @@
+ 1x Sandwich---------------10.5
+	Size: 8"
+	Bread: White
+	Toasted: true
+	Meat: Bacon
+	Cheese: Cheddar
+	Toppings: 
+		Lettuce
+		Tomatoes
+	Sauces: 
+		Ranch
+Total Price: --------------- 10.5

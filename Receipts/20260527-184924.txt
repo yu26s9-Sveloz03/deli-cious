@@ -1,0 +1,12 @@
+ 1x Sandwich---------------7.75
+	Size: 4"
+	Bread: White
+	Toasted: true
+	Meat: EXTRA Roast Beef
+	Cheese: Cheddar
+	Toppings: 
+		Lettuce
+		Tomatoes
+	Sauces: 
+		Ranch
+Total Price: --------------- 7.75
