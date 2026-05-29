@@ -1,6 +1,6 @@
 package com.pluralsight.userInterface;
 
-import com.pluralsight.items.Sandwich;
+import com.pluralsight.checkoutItems.Sandwich;
 import com.pluralsight.toppings.RegularTopping;
 import com.pluralsight.toppings.Sauce;
 import com.pluralsight.toppings.Topping;

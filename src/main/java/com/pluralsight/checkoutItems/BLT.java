@@ -1,4 +1,4 @@
-package com.pluralsight.items;
+package com.pluralsight.checkoutItems;
 
 import com.pluralsight.toppings.Cheese;
 import com.pluralsight.toppings.Meat;
@@ -7,7 +7,6 @@ import com.pluralsight.toppings.Sauce;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class BLT extends Sandwich{
 

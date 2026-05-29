@@ -1,4 +1,4 @@
-package com.pluralsight.items;
+package com.pluralsight.checkoutItems;
 
 public interface Item {
 

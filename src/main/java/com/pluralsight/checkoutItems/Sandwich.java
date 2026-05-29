@@ -1,4 +1,4 @@
-package com.pluralsight.items;
+package com.pluralsight.checkoutItems;
 
 import com.pluralsight.toppings.Cheese;
 import com.pluralsight.toppings.Meat;
@@ -42,9 +42,9 @@ public class Sandwich implements Item {
 
     @Override
     public String printInfo() {
-        String info = " 1x Sandwich---------------$" + getPrice() + "\n\t" +
+        String info = String.format(" 1x Sandwich---------------$%.2f\n\t" +
                 "Size: " + getSize() + "\"\n\t" +
-                "Bread: " + getBread() + "\n\t";
+                "Bread: " + getBread() + "\n\t",getPrice());
         if (isToasted() == true) {
             info += "Toasted: Yes\n\t";
         } else {

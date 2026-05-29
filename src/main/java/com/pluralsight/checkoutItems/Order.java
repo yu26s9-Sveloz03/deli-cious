@@ -1,9 +1,4 @@
-package com.pluralsight;
-
-import com.pluralsight.items.Chips;
-import com.pluralsight.items.Drink;
-import com.pluralsight.items.Item;
-import com.pluralsight.items.Sandwich;
+package com.pluralsight.checkoutItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +39,7 @@ public class Order {
                 receipt += item.printInfo();
             }
         }
-        receipt += "\nTotal Price: --------------- " + getTotalPrice();
+        receipt += String.format("\nTotal Price: --------------- $%.2f",getTotalPrice());
         return receipt;
     }
 

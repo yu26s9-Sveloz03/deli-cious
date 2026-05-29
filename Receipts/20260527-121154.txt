@@ -1,4 +1,3 @@
-
  1x SpriteDrink---------------2.5
 	Size: Medium
  1x Coca-ColaDrink---------------2.0

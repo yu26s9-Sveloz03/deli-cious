@@ -1,4 +1,4 @@
-package com.pluralsight.items;
+package com.pluralsight.checkoutItems;
 
 public class Chips implements Item {
     private String name;
@@ -16,7 +16,7 @@ public class Chips implements Item {
 
     @Override
     public String printInfo() {
-        String info = "\n 1x " + getName() + " Bag---------------" + getPrice();
+        String info = String.format("\n 1x " + getName() + " Bag---------------$%.2f",getPrice());
         return info;
     }
 

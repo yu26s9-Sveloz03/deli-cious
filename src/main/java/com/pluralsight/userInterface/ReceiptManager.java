@@ -1,6 +1,6 @@
 package com.pluralsight.userInterface;
 
-import com.pluralsight.Order;
+import com.pluralsight.checkoutItems.Order;
 
 import java.io.BufferedWriter;
 import java.io.File;

@@ -1,11 +1,9 @@
 package com.pluralsight.userInterface;
 
-import com.pluralsight.*;
-import com.pluralsight.items.*;
+import com.pluralsight.checkoutItems.*;
 import com.pluralsight.toppings.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class HomeScreen {
@@ -98,7 +96,7 @@ public class HomeScreen {
     }
 
     public void checkout(Order order) {
-        System.out.println("-----Checkout-----");
+        System.out.println("------------Checkout-------------");
         System.out.println(order.printReceipt());
         while (true) {
             System.out.println("What do you want to do:\n\t" +
@@ -136,7 +134,7 @@ public class HomeScreen {
     public void addSammy(Order order) {
         EditSandwich editSandwich = new EditSandwich();
         GreenEggsAndHam greenEggsAndHam = new GreenEggsAndHam();
-        greenEggsAndHam.printInfo();
+        System.out.println(greenEggsAndHam.printInfo());
         editSandwich.editSandwich(greenEggsAndHam);
         order.addItem(greenEggsAndHam);
         System.out.println("Sandwich Added!");
@@ -145,7 +143,7 @@ public class HomeScreen {
     public void addChoppedCheese(Order order) {
         EditSandwich editSandwich = new EditSandwich();
         ChoppedCheese choppedCheese = new ChoppedCheese();
-        choppedCheese.printInfo();
+        System.out.println(choppedCheese.printInfo());
         editSandwich.editSandwich(choppedCheese);
         order.addItem(choppedCheese);
         System.out.println("Sandwich Added!");
@@ -154,7 +152,7 @@ public class HomeScreen {
     public void addBLT(Order order) {
         EditSandwich editSandwich = new EditSandwich();
         BLT blt = new BLT();
-        blt.printInfo();
+        System.out.println(blt.printInfo());
         editSandwich.editSandwich(blt);
         order.addItem(blt);
         System.out.println("Sandwich Added!");
