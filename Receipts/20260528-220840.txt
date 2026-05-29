@@ -1,0 +1,16 @@
+ 1x Sandwich---------------13.75
+	Size: 12"
+	Bread: White
+	Toasted: false
+	Meat: Ground Beef
+	Cheese: American
+	Toppings: 
+		Lettuce
+		Peppers
+		Onions
+		Tomatoes
+	Sauces: 
+		Mayo
+		Ketchup
+
+Total Price: --------------- 13.75

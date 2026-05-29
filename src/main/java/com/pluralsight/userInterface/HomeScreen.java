@@ -18,6 +18,7 @@ public class HomeScreen {
                     "1) New Order\n\t" +
                     "0) Exit");
             int command = Console.promptForInt("What would you like to do? ");
+            System.out.println();
             switch (command) {
                 case 1 -> newOrder();
                 case 0 -> {
@@ -37,14 +38,22 @@ public class HomeScreen {
                     "2) Add Drink\n\t" +
                     "3) Add Chips\n\t" +
                     "4) Checkout\n\t" +
-                    "5) Pick One of Our Signatures\n\t" +
+                    "5) Our Signatures\n\t" +
                     "0) Cancel Order");
             int command = Console.promptForInt("What would you like to do? ");
+            System.out.println();
             switch (command) {
                 case 1 -> addSandwich(order);
                 case 2 -> addDrink(order);
                 case 3 -> addChips(order);
-                case 4 -> {checkout(order); return;}
+                case 4 -> {
+                    if (order.isEmpty()) {
+                        System.out.println("Can not checkout an empty order!");
+                    } else {
+                        checkout(order);
+                        return;
+                    }
+                }
                 case 5 -> addSignature(order);
                 case 0 -> {
                     System.out.println("Thank you! Have a nice day!");
@@ -96,6 +105,7 @@ public class HomeScreen {
                     "1) Confirm\n\t" +
                     "2) Cancel");
             int command = Console.promptForInt("Please choose one:",1,2);
+            System.out.println();
             switch (command) {
                 case 1 -> {createReceipt(order);return;}
                 case 2 -> {order = null;return;}
@@ -111,6 +121,7 @@ public class HomeScreen {
                     "3) Sam-I-Am's Green Eggs & Ham \n\n\t" +
                     "0) Exit");
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {addBLT(order);return;}
                 case 2 -> {addChoppedCheese(order);return;}
@@ -152,6 +163,7 @@ public class HomeScreen {
     public void createReceipt(Order order){
         ReceiptManager receiptManager = new ReceiptManager();
         receiptManager.writeReceipt(order);
+        System.out.println("Receipt created!");
     }
 
     public String selectChipsName(){
@@ -163,6 +175,7 @@ public class HomeScreen {
                 "5) Takis");
         while (true) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {return "Doritos";}
                 case 2 -> {return "Lays";}
@@ -183,6 +196,7 @@ public class HomeScreen {
                 "5) Mountain Dew");
         while (true) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {return "Coca-Cola";}
                 case 2 -> {return "Sprite";}
@@ -201,6 +215,7 @@ public class HomeScreen {
                 "3) Large\n\t");
         while (true) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {return "Small";}
                 case 2 -> {return "Medium";}
@@ -218,6 +233,7 @@ public class HomeScreen {
                 "4) Wrap");
         while (true) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {return "White";}
                 case 2 -> {return "Wheat";}
@@ -235,6 +251,7 @@ public class HomeScreen {
                 "3) Large");
         while (true) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {return 4;}
                 case 2 -> {return 8;}
@@ -250,6 +267,7 @@ public class HomeScreen {
                     "1) Yes\n\t" +
                     "2) No\n" +
                     "What would you like? ");
+            System.out.println();
             switch (toasted) {
                 case 1 -> {return true;}
                 case 2 -> {return false;}
@@ -272,6 +290,7 @@ public class HomeScreen {
         boolean valid = true;
         while (valid) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {name = "Steak"; valid = false;}
                 case 2 -> {name = "Ham"; valid = false;}
@@ -288,6 +307,7 @@ public class HomeScreen {
         boolean valid2 = true;
         while (valid2) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {extra = true; valid2 = false;}
                 case 2 -> {extra = false; valid2 = false;}
@@ -308,6 +328,7 @@ public class HomeScreen {
         boolean valid = true;
         while (valid) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {name = "American"; valid = false;}
                 case 2 -> {name = "Provolone"; valid = false;}
@@ -322,6 +343,7 @@ public class HomeScreen {
         boolean valid2 = true;
         while (valid2) {
             int command = Console.promptForInt("Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {extra = true; valid2 = false;}
                 case 2 -> {extra = false; valid2 = false;}
@@ -344,6 +366,7 @@ public class HomeScreen {
                 "8) Guacamole\n\t" +
                 "9) Mushrooms");
         String allToppings = Console.promptForMultipleInts("Which toppings would you like? You can choose multiple using commas. ");
+        System.out.println();
         if ( allToppings.contains("1") ){
             RegularTopping lettuce = new RegularTopping("Lettuce",false);
             toppings.add(lettuce);
@@ -388,6 +411,7 @@ public class HomeScreen {
         System.out.println(pickedToppings);
         System.out.println("\t0) No Extra Toppings");
         String allExtras = Console.promptForMultipleInts("Which topping would you like extra of? You can choose multiple using commas.");
+        System.out.println();
         if (allExtras.contains("0")){
             return toppings;
         }
@@ -411,6 +435,7 @@ public class HomeScreen {
                 "6) Vinaigrette\n\t" +
                 "7) Au Jus");
         String allSauces = Console.promptForMultipleInts("Which sauces would you like? You can choose multiple using commas. ");
+        System.out.println();
         if ( allSauces.contains("1")){
             Sauce mayo = new Sauce("Mayo",false);
             sauces.add(mayo);
@@ -447,6 +472,7 @@ public class HomeScreen {
         System.out.println(pickedSauces);
         System.out.println("\t0) No Extra Toppings");
         String allExtras = Console.promptForMultipleInts("Which sauce would you like extra of? You can choose multiple using commas.");
+        System.out.println();
         if (allExtras.contains("0")){
             return sauces;
         }

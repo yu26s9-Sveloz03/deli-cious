@@ -42,10 +42,14 @@ public class Sandwich implements Item {
 
     @Override
     public String printInfo() {
-        String info = " 1x Sandwich---------------" + getPrice() + "\n\t" +
+        String info = " 1x Sandwich---------------$" + getPrice() + "\n\t" +
                 "Size: " + getSize() + "\"\n\t" +
-                "Bread: " + getBread() + "\n\t" +
-                "Toasted: " + isToasted();
+                "Bread: " + getBread() + "\n\t";
+        if (isToasted() == true) {
+            info += "Toasted: Yes\n\t";
+        } else {
+            info += "Toasted: No";
+        }
         if(getMeat().isExtra()){
             info += "\n\tMeat: EXTRA " + getMeat().getName();
         } else {

@@ -55,4 +55,12 @@ public class Order {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    public boolean isEmpty() {
+        if (items.isEmpty()){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

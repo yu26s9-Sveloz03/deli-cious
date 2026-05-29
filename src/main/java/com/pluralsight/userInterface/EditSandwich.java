@@ -18,6 +18,7 @@ public class EditSandwich {
                     "1) Yes\n\t" +
                     "2) No\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> editAttribute(sandwich);
                 case 2 -> {return;}
@@ -38,6 +39,7 @@ public class EditSandwich {
                     "7) Sauces\n\t" +
                     "0) Exit\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> editSize(sandwich);
                 case 2 -> editBread(sandwich);
@@ -59,6 +61,7 @@ public class EditSandwich {
                     "2) Medium (8\")\n\t" +
                     "3) Large (12\")\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {
                     sandwich.setSize(4);
@@ -95,6 +98,7 @@ public class EditSandwich {
                     "3) Rye\n\t" +
                     "4) Wrap\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {
                     sandwich.setBread("White");
@@ -127,6 +131,7 @@ public class EditSandwich {
                     "1) Yes\n\t" +
                     "2) No\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {
                     sandwich.setToasted(true);
@@ -154,6 +159,7 @@ public class EditSandwich {
                     "5) Chicken\n\t" +
                     "6) Bacon\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {
                     sandwich.getMeat().setName("Steak");
@@ -205,6 +211,7 @@ public class EditSandwich {
                     "3) Cheddar\n\t" +
                     "4) Swiss\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {
                     sandwich.getCheese().setName("American");
@@ -242,6 +249,7 @@ public class EditSandwich {
                     "1) Add toppings\n\t" +
                     "2) Remove toppings\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {
                     addToppings(sandwich);
@@ -265,6 +273,7 @@ public class EditSandwich {
                     "1) Add sauces\n\t" +
                     "2) Remove sauces\n" +
                     "Please choose one: ");
+            System.out.println();
             switch (command) {
                 case 1 -> {
                     addSauces(sandwich);
@@ -292,6 +301,7 @@ public class EditSandwich {
                 "6) Vinaigrette\n\t" +
                 "7) Au Jus");
         String allSauces = Console.promptForMultipleInts("Which toppings would you like? You can choose multiple using commas. ");
+        System.out.println();
         ArrayList<String> saucesNames = new ArrayList<>();
         for (Sauce sauce: sandwich.getSauces()){
             saucesNames.add(sauce.getName());
@@ -367,6 +377,7 @@ public class EditSandwich {
             System.out.print("\t" + i + ") " + sandwich.getSauces().get(i-1).getName() + "\n\t");
         }
         String saucesToRemove = Console.promptForMultipleInts("Which sauces would you like to remove? You can choose multiple using commas. ");
+        System.out.println();
         for (int i = sandwich.getSauces().size(); i > 0; i--) {
             if (saucesToRemove.contains(String.valueOf(i))) {
                 sandwich.getSauces().remove(sandwich.getSauces().get(i-1));
@@ -386,6 +397,7 @@ public class EditSandwich {
                 "8) Guacamole\n\t" +
                 "9) Mushrooms");
         String allToppings = Console.promptForMultipleInts("Which toppings would you like? You can choose multiple using commas. ");
+        System.out.println();
         ArrayList<String> toppingNames = new ArrayList<>();
         for (RegularTopping topping: sandwich.getToppings()){
             toppingNames.add(topping.getName());
@@ -479,6 +491,7 @@ public class EditSandwich {
             System.out.print("\t" + i + ") " + sandwich.getToppings().get(i-1).getName() + "\n\t");
         }
         String toppingsToRemove = Console.promptForMultipleInts("Which toppings would you like to remove? You can choose multiple using commas. ");
+        System.out.println();
         for (int i = sandwich.getToppings().size(); i > 0; i--) {
             if (toppingsToRemove.contains(String.valueOf(i))) {
                 sandwich.getToppings().remove(sandwich.getToppings().get(i-1));
@@ -491,7 +504,8 @@ public class EditSandwich {
             int command = Console.promptForInt("Do you want this to be extra?\n\t" +
                     "1) Yes\n\t" +
                     "2) No \n" +
-                    "Please choose one");
+                    "Please choose one:");
+            System.out.println();
             switch (command) {
                 case 1 -> {
                     topping.setExtra(true);
